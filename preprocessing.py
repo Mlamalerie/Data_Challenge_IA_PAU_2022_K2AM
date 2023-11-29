@@ -150,11 +150,10 @@ def preprocess_dataset(train_filepath, output_filepath="output.csv", urls_stripp
                                  text_lemmatization=text_lemmatization, special_char_removal=special_char_removal,
                                  stopword_removal=stopword_removal))
 
-    if to_csv:
-        df_movies_train.to_csv(output_filepath)
-        return output_filepath
-    else:
+    if not to_csv:
         return df_movies_train
+    df_movies_train.to_csv(output_filepath)
+    return output_filepath
 
 def main():
     for TEXT_LEMMATIZATION in [0]:
